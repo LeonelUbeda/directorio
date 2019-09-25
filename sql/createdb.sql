@@ -3,6 +3,9 @@ create table if not exists categoria (
 	id int primary key auto_increment,
     nombre varchar(30) not null
 );
+
+
+
 create table if not exists empresa(
 	id int primary key auto_increment,
     ID_categoria int not null,

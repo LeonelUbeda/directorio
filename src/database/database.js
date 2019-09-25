@@ -1,4 +1,26 @@
 import Sequelize from 'sequelize';
+import mysql from 'mysql2'
+
+
+const host = 'localhost'
+const user = 'root'
+const password = 'admin'
+const database = 'directorio'
+
+const connection = mysql.createConnection({
+    host: host,
+    user: user,
+    password: password
+});
+
+connection.query('create database if not exists ' + database,
+    function(err, results, fields) {
+      console.log(results); // results contains rows returned by server
+      console.log(fields); // fields contains extra meta data about results, if available
+    }
+  );
+
+
 
 
 export const sequelize = new Sequelize('directorio', 'root', 'admin', {
@@ -14,4 +36,4 @@ export const sequelize = new Sequelize('directorio', 'root', 'admin', {
 })
 
 
-
+export default sequelize;
