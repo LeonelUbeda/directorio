@@ -1,7 +1,7 @@
 import Sequelize from 'sequelize';
 import mysql from 'mysql2'
 
-
+/* Configuracion */
 const host = 'localhost'
 const user = 'root'
 const password = 'admin'
@@ -20,9 +20,6 @@ connection.query('create database if not exists ' + database,
     }
   );
 
-
-
-
 export const sequelize = new Sequelize('directorio', 'root', 'admin', {
     host: 'localhost',
     dialect: 'mysql',
@@ -31,6 +28,9 @@ export const sequelize = new Sequelize('directorio', 'root', 'admin', {
         min: 0,
         required: 30000,
         idle: 10000
+    },
+    define: {
+      freezeTableName: true, // Evitar que añada la 'S' al final de cada nombre de las tablas
     },
     loggin: false
 })
