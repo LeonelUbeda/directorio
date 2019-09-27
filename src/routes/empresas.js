@@ -1,9 +1,11 @@
-/*import {Router} from 'express'
+import {Router} from 'express'
 const router = Router();
-*/
-const router = require('express').Router();
+
 
 import Empresas from '../models/Empresa'
+import EmpresaCategoria from '../models/EmpresaCategoria'
+import Categoria from '../models/Categoria'
+
 
 
 router.get('/todos', (req, res) => {
@@ -16,15 +18,22 @@ router.get('/todos', (req, res) => {
     .catch(err => console.log(errr));
 })
 
-router.get('/nuevo', (req, res) => {
-    Empresas.create({
+
+
+
+router.post('/nuevo', (req, res) => {
+    /*Empresas.create({
         nombre: "Fua chaval"
     })
     .then(respuesta => {
         console.log(respuesta)
         res.send("OK!")
     })
-    .catch(error => console.log(error))
+    .catch(error => console.log(error))*/
+    console.log("hola" ,req.body)
+    res.send("Ok")
 })
+
+
 
 module.exports = router;
