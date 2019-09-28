@@ -36,4 +36,4 @@ router.post('/nuevo', (req, res) => {
 
 
 
-module.exports = router;
+export default router;

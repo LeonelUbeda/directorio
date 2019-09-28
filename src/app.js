@@ -3,8 +3,13 @@ import morgan from 'morgan'
 import bodyParser from 'body-parser'
 const app = express();
 
+//Importando conexion con la base de datos
 import db from './database/connectDB'
 
+
+// Importando Rutas
+import CategoriaRouter from './routes/categorias'
+import EmpresaRouter from './routes/empresas'
 
 // Middlewares
 
@@ -12,13 +17,12 @@ app.use(morgan('dev'));
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
-// Routes
-
-app.use('/api/empresa', require('./routes/empresas'));
-app.use('/api/categoria', require('./routes/categorias'));
 
 
 
+// Rutas
+app.use('/api/categoria', CategoriaRouter);
+app.use('/api/empresa', EmpresaRouter);
 //app.use('/api/localidad', require('./routes/localidades'));
 
 

@@ -3,7 +3,7 @@ import db from '../database/connectDB' // Conexion
 import Categoria from './Categoria'
 import Empresa from './Empresa'
 
-const EmpresaCategoria = db.define('hola', {
+const EmpresaCategoria = db.define('empresa_categoria', {
 })
 
 

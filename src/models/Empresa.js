@@ -21,7 +21,7 @@ const Empresa = db.define('empresa',{
 
 
 Localidad.belongsTo(Empresa)
-Empresa.belongsTo(Categoria)
+
 
 
 
