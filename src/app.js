@@ -1,6 +1,7 @@
 import express, { json } from 'express'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 const app = express();
 
 //Importando conexion con la base de datos
@@ -20,11 +21,11 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-
 
 
 
+app.use(cors())
 // Rutas
 app.use('/api/categoria', CategoriaRouter);
 app.use('/api/empresa', EmpresaRouter);
 //app.use('/api/localidad', require('./routes/localidades'));
-
 
 
 db.authenticate().then(() => {

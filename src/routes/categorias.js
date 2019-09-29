@@ -5,15 +5,16 @@ const router = Router();
 import Categoria from '../models/Categoria'
 
 //Controladores
-import {CategoriaCrear, CategoriaTodos} from '../controllers/categorias.controller'
+import {CategoriaCrear, CategoriaTodos, CategoriaEliminar, CategoriaBuscar} from '../controllers/categorias.controller'
 
 
 
 //Rutas
 
-router.post('/nuevo' , CategoriaCrear);
-router.get('/todos', CategoriaTodos);
-
+router.get('/', CategoriaTodos);
+router.post('/' , CategoriaCrear);
+router.delete('/:id', CategoriaEliminar)
+router.get('/:id', CategoriaBuscar)
 
 
 export default router;

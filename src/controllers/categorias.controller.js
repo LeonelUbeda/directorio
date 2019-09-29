@@ -1,5 +1,11 @@
 
 import Categoria from '../models/Categoria'
+import { type } from 'os';
+
+
+
+
+
 
 const CategoriaCrear = (req, res, next) => {
     const {nombre} = req.body;
@@ -10,9 +16,15 @@ const CategoriaCrear = (req, res, next) => {
     //created es un booleano, verdadero si creó el registro nuevo
         console.log(resultado.get({plain: true}))
         if(created){
-            res.send("Elemento creado")
+            res.json({
+                message: 'Elemento creado exitosamente',
+                success: true
+            })
         }else{
-            res.send("Elemento ya existente")
+            res.json({
+                message: 'Elemento ya existente',
+                success: false
+            })
         }
     })
 }
@@ -20,12 +32,59 @@ const CategoriaCrear = (req, res, next) => {
 const CategoriaTodos = (req, res, next) => {
     Categoria.findAll({attributes: ['id', ['nombre', 'categoria']]})
     .then((resultado) => {
+        res.json({
+            success: true,
+            elements: resultado
+        })
+    })
+    
+}
+
+const CategoriaEliminar = (req, res, next) => {
+    const {id} = req.params;
+    Categoria.destroy({
+        where: {
+            id : id
+        }
+    })
+    .then((RegistrosBorrados) => {
+        if(RegistrosBorrados > 0){
+            res.json({
+                message: 'Se ha borrado exitosamente',
+                success: true
+            })
+        }else{
+            res.json({
+                message: 'No existe esa categoria',
+                success: false
+            })
+        }
+    })
+    .catch((error) => {
+        console.log(error)
+        res.status(404).json({
+            message: 'Error de servidor',
+            success: false
+        })
+    })
+}
+
+
+
+
+const CategoriaBuscar = (req, res, next) => {
+    const {id} = req.params
+    Categoria.findAll({
+        where: {
+            id
+        },
+        attributes: ['id', ['nombre', 'categoria']]
+    })
+    .then((resultado) => {
         let respuesta =  JSON.stringify(resultado)
         return respuesta
     })
     .then((resultado) => res.send(resultado))
 }
 
-
-
-export {CategoriaCrear, CategoriaTodos};
+export {CategoriaCrear, CategoriaTodos, CategoriaEliminar, CategoriaBuscar};
