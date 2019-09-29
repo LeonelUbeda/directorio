@@ -1,6 +1,6 @@
 # API legendaria
 # Formato de respuestas
-
+### Proyecto apenas empezando
 | propiedad | descripcion |
 | ------ | ------ |
 | success | Este es un true o false dependiendo lo sucedido. Por ejemplo si se quiere borrar un elemento y el elemento no existe, habrá un sucess: false. Si ocurre un problema con el servidor se manda un status de 404 |
