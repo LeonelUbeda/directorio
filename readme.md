@@ -1,5 +1,6 @@
 # API legendaria
 # Formato de respuestas
+## PROYECTO AHORA SE VA A HACER EN PYTHON - Django
 ### Proyecto apenas empezando
 | propiedad | descripcion |
 | ------ | ------ |
